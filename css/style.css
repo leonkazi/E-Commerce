@@ -64,11 +64,6 @@ nav.navbar {
     white-space: nowrap ;
 }
 
-
- #table-right {
-    /* box-sizing: border-box; */
-    
-  }
   
   /* Create a two-column layout */
 
@@ -228,9 +223,3 @@ body
 {   
     padding-bottom:0;   
 }
-
-
-
-
-
-

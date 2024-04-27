@@ -18,7 +18,7 @@
                 <div id = "black-table-text-bottom">Delivery</div>
             </div> 
             <!-- onclick display : Order History -->
-            <div id = "table-right" class="column-right" style = "display: none">
+            <div  class="column-right" style = "display: none">
                 <?php include 'right_white_table.php'; ?>
             </div> 
 
