@@ -17,17 +17,27 @@
                         </a>
                </div>
                 <div id = "black-table-text">Vehicle Management</div>
-                <div id = "black-table-text">Customer(s)</div>
+                <div id = "black-table-text">
+                    <a href="#" onclick ="showCustomers();" style="color: inherit; text-decoration: none;">
+                         Customer(s)
+                    </a>       
+                </div>
                 <div id = "black-table-text">Payments</div>
                 <div id = "black-table-text-bottom">Delivery</div>
             </div> 
-            <!-- onclick display : Order History -->
+            <!-- onclick display : Order Status-->
             <div  id = "table-right" class="column-right" style = "display: none">
                 <?php include 'right_white_table.php'; ?>
             </div> 
 
+           <!-- onclick display : Order History -->
             <div  id = "table-right-order-history" class="column-right" style = "display: none">
                 <?php include 'order_history_content.php'; ?>
+            </div> 
+
+            <!-- onclick display : Customers-->
+            <div  id = "table-right-customers" class="column-right" style = "display: none">
+                <?php include 'customer.php'; ?>
             </div> 
 
         </div>
@@ -37,6 +47,7 @@
         function showOrderStatus() {
             // Hide all other sections
             document.getElementById('table-right-order-history').style.display = 'none';
+            document.getElementById('table-right-customers').style.display = 'none';
 
             var textElement = document.getElementById('table-right');
             textElement.style.display = 'block';
@@ -44,8 +55,17 @@
         function showOrderHistory() {
              // Hide all other sections
             document.getElementById('table-right').style.display = 'none';
+            document.getElementById('table-right-customers').style.display = 'none';
 
             var textElement = document.getElementById('table-right-order-history');
+            textElement.style.display = 'block';
+        }
+        function showCustomers() {
+             // Hide all other sections
+            document.getElementById('table-right-order-history').style.display = 'none'; 
+            document.getElementById('table-right').style.display = 'none';
+
+            var textElement = document.getElementById('table-right-customers');
             textElement.style.display = 'block';
         }
     </script>
