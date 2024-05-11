@@ -72,14 +72,57 @@ function getCustomersById($conn,$id){
     $conn = null;
     return $customer;
 }
+
+function getAllOrdersDelivered($conn){
+    $status = 'Delivered';
+    $sql = "SELECT * FROM orders where status=:status";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['status' => $status]);
+
+    // Define an empty array to store the objects
+    $ordersList = array();
+    
+    try{
+        $orders = $stmt->fetchAll();
+        
+    }catch(Exception $e){
+        echo $e;
+    }
+    
+    include_once '../model/Order.php';
+    foreach ($orders as $row) {
+        
+        $order = new Order($row["id"],
+                            $row["product_id"], 
+                            $row["customer_id"], 
+                            $row["unit"], 
+                            $row["unit_price"],
+                            $row["total_price"], 
+                            $row["order_no"], 
+                            $row["status"],
+                            $row["vehicle_name"],
+                            $row["rider_name"]);
+        // echo $order;                    
+        $ordersList[] = $order; 
+        
+        
+    }       
+    // $stmt->closeCursor();
+    $conn = null;
+    return $ordersList;
+}
     
 // $x = getAllOrders($conn);
 
-// var_dump($x);
+// var_dump($x); /
 
 // $y = getProductsById($conn,1);
 // var_dump($y);
 
 // $z = getCustomersById($conn,4);
 // var_dump($z);
+
+// $p = getAllOrdersDelivered($conn);
+// var_dump($p);
+
 ?>
