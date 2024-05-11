@@ -223,3 +223,10 @@ body
 {   
     padding-bottom:0;   
 }
+#table-right {
+    /* box-sizing: border-box; */
+  }
+
+select #status{
+    width: 200px;
+}
