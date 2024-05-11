@@ -73,6 +73,34 @@ function getCustomersById($conn,$id){
     return $customer;
 }
 
+function getAllCustomers($conn){
+    $sql = "SELECT * FROM customers";
+    $stmt = $conn->prepare($sql);
+
+    try{
+        $stmt->execute();
+    }catch(Exception $e){
+        echo $e;
+    }
+   
+    $customer = array();
+    $all_customer = $stmt->fetchAll();
+    // var_dump($all_customer);
+    include_once '../model/Customer.php';
+    foreach ($all_customer as $row) {
+        $customer_obj = new Customer($row["id"],
+                                    $row["name"],
+                                    $row["phone"],
+                                    $row["address"],
+                                    $row["customer_uuid"]);
+
+        $customer[] = $customer_obj;
+    }
+
+    $conn = null;
+    return $customer;;
+}
+
 function getAllOrdersDelivered($conn){
     $status = 'Delivered';
     $sql = "SELECT * FROM orders where status=:status";
