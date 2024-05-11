@@ -53,21 +53,31 @@
 <script>
   // Example to show or hide options, or handle change events
 document.addEventListener('DOMContentLoaded', function() {
-    const statusDropdowns = document.querySelectorAll('select[name="status"]');
+    const statusDropdowns = document.querySelectorAll('select[name^="status"]');
     statusDropdowns.forEach(dropdown => {
         dropdown.addEventListener('change', function() {
             // Handle change event here, e.g., update the database
             console.log('Status changed to:', this.value);
+
+            var orderId = this.id.replace('status', '');
+            var status = this.value;
+
+            fetch('../database/update_order_status.php',{
+             method: 'POST',
+             headers:{
+              'Content-Type': 'application/x-www-form-urlencoded',
+             },
+              body: 'orderId=' + orderId + '&status=' + status
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Log the response from the server
+                alert('Status updated successfully');
+            })
+            .catch(error => console.error('Error:', error));
+
         });
     });
 });
 
-    function toggleOptions(selectId) {
-    var selectElement = document.getElementById(selectId);
-    var options = selectElement.options;
-    selectElement.size = options.length; // Optional: Make all options visible in an expanded list.
-    selectElement.addEventListener('blur', function() {
-        selectElement.size = 1; // Collapse the select box when it loses focus.
-    });
-}
 </script>
