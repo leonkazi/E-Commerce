@@ -9,9 +9,10 @@
     <th>Status</th>
   </tr>
   <?php
-  include '../config/database_connection.php';
-  include '../database/retreive_data.php';
-  include '../model/OrderStatus.php';
+  include_once '../config/database_connection.php';
+  include_once '../database/retreive_data.php';
+  include_once '../model/OrderStatus.php';
+  
   $order_data = getAllOrders($conn);
   $new_order_data = array();
   $i=1;
