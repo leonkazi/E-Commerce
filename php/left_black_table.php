@@ -16,7 +16,11 @@
                             Order History
                         </a>
                </div>
-                <div id = "black-table-text">Vehicle Management</div>
+                <div id = "black-table-text">
+                    <a href="#" onclick ="showVehicles();" style="color: inherit; text-decoration: none;">
+                        Vehicle Management
+                    </a>
+                </div>
                 <div id = "black-table-text">
                     <a href="#" onclick ="showCustomers();" style="color: inherit; text-decoration: none;">
                          Customer(s)
@@ -40,6 +44,11 @@
                 <?php include 'customer.php'; ?>
             </div> 
 
+             <!-- onclick display : Vehicle Management-->
+             <div  id = "table-right-vehicles" class="column-right" style = "display: none">
+                <?php include 'vehicle.php'; ?>
+            </div> 
+
         </div>
     </div>
 
@@ -48,6 +57,7 @@
             // Hide all other sections
             document.getElementById('table-right-order-history').style.display = 'none';
             document.getElementById('table-right-customers').style.display = 'none';
+            document.getElementById('table-right-vehicles').style.display = 'none';
 
             var textElement = document.getElementById('table-right');
             textElement.style.display = 'block';
@@ -56,6 +66,7 @@
              // Hide all other sections
             document.getElementById('table-right').style.display = 'none';
             document.getElementById('table-right-customers').style.display = 'none';
+            document.getElementById('table-right-vehicles').style.display = 'none';
 
             var textElement = document.getElementById('table-right-order-history');
             textElement.style.display = 'block';
@@ -64,8 +75,18 @@
              // Hide all other sections
             document.getElementById('table-right-order-history').style.display = 'none'; 
             document.getElementById('table-right').style.display = 'none';
+            document.getElementById('table-right-vehicles').style.display = 'none';
 
             var textElement = document.getElementById('table-right-customers');
+            textElement.style.display = 'block';
+        }
+        function showVehicles(){
+             // Hide all other sections
+            document.getElementById('table-right-order-history').style.display = 'none'; 
+            document.getElementById('table-right').style.display = 'none';
+            document.getElementById('table-right-customers').style.display = 'none';
+            
+            var textElement = document.getElementById('table-right-vehicles');
             textElement.style.display = 'block';
         }
     </script>
