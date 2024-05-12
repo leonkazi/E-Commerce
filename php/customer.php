@@ -14,7 +14,6 @@
     }
 </style>
 
-
 <table>
     <thead>
         <tr>
@@ -48,13 +47,6 @@
    
 ?>
 
-
-        <!-- <tr>
-            <td>Md Leon Kazi</td>
-            <td>019 000 000 000</td>
-            <td>1/2 Dhaka, BD</td>
-            <td>24-Apr-2024</td>
-        </tr> -->
     </tbody>
 </table>
 

@@ -139,18 +139,33 @@ function getAllOrdersDelivered($conn){
     $conn = null;
     return $ordersList;
 }
+
+function getAllVehicles($conn){
+    $sql = "SELECT * FROM vehicles";
+    $stmt = $conn->prepare($sql);
+
+    try{
+        $stmt->execute();
+    }catch(Exception $e){
+        echo $e;
+    }
+   
+    $vehicle = array();
+    $all_vehicle = $stmt->fetchAll();
+    // var_dump($all_customer);
+    include_once '../model/Vehicle.php';
+    foreach ($all_vehicle as $row) {
+        $vehicle_obj = new Vehicle($row["id"],
+                                    $row["product_name"],
+                                    $row["order_no"],
+                                    $row["vehicle_name"],
+                                    $row["rider_name"]);
+
+        $vehicle[] = $vehicle_obj;
+    }
+
+    $conn = null;
+    return $vehicle;;
+}
     
-// $x = getAllOrders($conn);
-
-// var_dump($x); /
-
-// $y = getProductsById($conn,1);
-// var_dump($y);
-
-// $z = getCustomersById($conn,4);
-// var_dump($z);
-
-// $p = getAllOrdersDelivered($conn);
-// var_dump($p);
-
 ?>
